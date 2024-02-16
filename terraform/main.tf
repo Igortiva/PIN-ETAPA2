@@ -8,6 +8,6 @@ resource "aws_instance" "ec2_instance" {
   key_name      = "PIN-ETAPA2"  # Cambia esto por el nombre de tu clave IAM
 
   tags = {
-    Name = "InstanciaEC2"
+    Name = "MiInstanciaEC2"
   }
 }
