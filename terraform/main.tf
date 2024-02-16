@@ -1,24 +1,13 @@
 provider "aws" {
-  region = "us-east-1" # Cambia esto según tu región preferida
+  region = "us-east-1"  # Cambia esto según tu región preferida
 }
 
-resource "aws_instance" "web" {
-  ami           = "ami-xxxxxxxxxxxxxxxxx" # AMI de Amazon Linux 2 o la que prefieras
-  instance_type = "t2.micro" # Tipo de instancia, ajusta según tus necesidades
+resource "aws_instance" "ec2_instance" {
+  ami           = "ami-0c55b159cbfafe1f0"  # AMI de Amazon Linux 2
+  instance_type = "t2.micro"
+  key_name      = "tu_nombre_de_clave_iam"  # Cambia esto por el nombre de tu clave IAM
 
   tags = {
-    Name = "apache-instance"
+    Name = "MiInstanciaEC2"
   }
-
-  user_data = <<-EOF
-              #!/bin/bash
-              sudo yum update -y
-              sudo yum install httpd -y
-              sudo systemctl start httpd
-              sudo systemctl enable httpd
-              EOF
-}
-
-output "public_ip" {
-  value = aws_instance.web.public_ip
 }
